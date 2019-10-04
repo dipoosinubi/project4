@@ -1,43 +1,36 @@
 import React, { Component } from 'react';
 import App from '../App';
 
-const merchandisePreview = (merchandise) => (
-    <li>
-     {merchandise.id} - {merchandise.description}
-    </li>
-)
-
-const merchandiseList =(merchandise) => (
-    <ul>
-       {merchandise.map(merchandisePreview)}
-    </ul>
-)
-const teamMerchandiseList = (team) => (
-    <div>
-        {team.name}
-        {merchandiseList(team.merchanise)}
-    </div>
-)
-
-const getTeamsFromServer = () => 
+const getTeamsFromServer = () =>
 fetch('/api/team/').then(res => res.json())
 
-const getMerchandiseFromServer = () =>
-fetch('/api/merchandise/').then(res => res.json())
 
+export default class HomePage extends React.Component {
 
-class HomePage extends React.Component{
-
-    state={
+    state = {
         currentTeam: 1,
-        teams:''
+        teams: []
     }
-    render(){
-        return(
+
+    componentDidMount = () => {
+       getTeamsFromServer().
+       then(teams => {
+           this.setState({ teams })
+       })
+    }
+
+    render() {
+        return (
             <div>
-                {teamMerchandiseList()}
+                <ul>
+                {this.state.teams.map (team => (
+                    <li>
+                        {team.name}
+                    </li>
+
+                ))}
+                </ul>
             </div>
         )
     }
 }
-export default HomePage;
