@@ -10,39 +10,49 @@ const getTeamsFromServer = () =>
 class NewTeamForm extends React.Component {
 
     state = {
-        name: "",
-        picture: "",
-        website: ""
+        // newTeam: {
+            name: "",
+            picture: "",
+            website: ""
+        // }
     }
     handleInput = (event) => {
         let newTeam = { ...this.state };
-
         newTeam[event.target.name] = event.target.value;
-
         this.setState(newTeam)
     }
 
-    // handleSubmit = (event) => {
-    //     event.preventDefault();
+    handleSubmit = (event) => {
+        event.preventDefault();
+        this.addNewTeam(this.state)
+        window.location.reload();
+    }
 
-    //     this.props.add
-    // }
+    addNewTeam = (newTeam) =>
+    fetch('/api/team/',
+        {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify(newTeam)
+        }
+    ).then(res => res.json())
+
+
     render = () => (
-      <form>
-          <div>
-          <input type="text" name="name" onChange={this.handleInput} value={this.state.name} placeholder="Enter Team Name" />
-          </div>
-          <div>
-          <input type="text" name="picture" onChange={this.handleInput} value={this.state.picture} placeholder="Enter Image URL" />
-          </div>
-          <div>
-          <input type="text" name="website" onChange={this.handleInput} value={this.state.website} placeholder="Enter Website URL" />
-          </div>
-          <input type="submit" value="New Team" />
-      </form>
+        <form>
+            <div>
+                <input type="text" name="name" onChange={this.handleInput} value={this.state.name} placeholder="Enter Team Name" />
+            </div>
+            <div>
+                <input type="text" name="picture" onChange={this.handleInput} value={this.state.picture} placeholder="Enter Image URL" />
+            </div>
+            <div>
+                <input type="text" name="website" onChange={this.handleInput} value={this.state.website} placeholder="Enter Website URL" />
+            </div>
+            <input type="submit" value="New Team" />
+        </form>
     )
 }
-
 
 
 
@@ -59,12 +69,13 @@ export default class HomePage extends React.Component {
             })
     }
 
+
     render() {
         return (
             <div class="container">
-           <div>
-               <NewTeamForm/>
-           </div>
+                <div>
+                    <NewTeamForm  addNewTeam={this.addNewTeam}/>
+                </div>
                 <div class="notification">
                     <ul>
                         {this.state.teams.map(team => (
