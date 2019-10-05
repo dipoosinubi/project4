@@ -39,15 +39,29 @@ class NewTeamForm extends React.Component {
 
 
     render = () => (
-        <form>
+        <form onSubmit={this.handleSubmit}>
             <div>
-                <input type="text" name="name" onChange={this.handleInput} value={this.state.name} placeholder="Enter Team Name" />
+                <input 
+                type="text" 
+                name="name" 
+                onChange={this.handleInput} 
+                value={this.state.name} 
+                placeholder="Enter Team Name" />
             </div>
             <div>
-                <input type="text" name="picture" onChange={this.handleInput} value={this.state.picture} placeholder="Enter Image URL" />
+                <input 
+                type="text" 
+                name="picture" 
+                onChange={this.handleInput} 
+                value={this.state.picture} 
+                placeholder="Enter Image URL" />
             </div>
             <div>
-                <input type="text" name="website" onChange={this.handleInput} value={this.state.website} placeholder="Enter Website URL" />
+                <input type="text" 
+                name="website" 
+                onChange={this.handleInput} 
+                value={this.state.website} 
+                placeholder="Enter Website URL" />
             </div>
             <input type="submit" value="New Team" />
         </form>
