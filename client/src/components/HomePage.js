@@ -94,7 +94,7 @@ export default class HomePage extends React.Component {
                     <ul>
                         {this.state.teams.map(team => (
                             <li>
-                                <Link>
+                                <Link to='/merchandise/:id'>
                                     {team.name}
                                 </Link>
                             </li>
