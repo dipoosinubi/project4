@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router-dom'
 import App from '../App';
 
 import 'bulma/css/bulma.css'
@@ -7,13 +6,29 @@ import 'bulma/css/bulma.css'
 const getTeamsFromServer = () =>
     fetch('/api/team/').then(res => res.json())
 
+// const getMerchandiseFromServer = () =>
+// fetch('/api/merchandise/').then(res => res.json())
+
+// const objectFromListById = (teams, merchandise) =>
+//   teams.reduce((obj, team) => {
+//       team.merchandise = merchandise.filter(merchandise => merchandise.team === team.id);
+//       obj[team.id] = team;
+//       return obj;
+//   }, {})
+
+// const getTeamAndMerchandiseFromServer = () =>
+// getTeamsFromServer().then(teams => 
+//     getMerchandiseFromServer().then (merchandise =>
+//         objectFromListById(teams, merchandise)
+//         ))
+
 class NewTeamForm extends React.Component {
 
     state = {
         // newTeam: {
-            name: "",
-            picture: "",
-            website: ""
+        name: "",
+        picture: "",
+        website: ""
         // }
     }
     handleInput = (event) => {
@@ -29,39 +44,39 @@ class NewTeamForm extends React.Component {
     }
 
     addNewTeam = (newTeam) =>
-    fetch('/api/team/',
-        {
-            method: "POST",
-            headers: { "Content-Type": "application/json" },
-            body: JSON.stringify(newTeam)
-        }
-    ).then(res => res.json())
+        fetch('/api/team/',
+            {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify(newTeam)
+            }
+        ).then(res => res.json())
 
 
     render = () => (
         <form onSubmit={this.handleSubmit}>
             <div>
-                <input 
-                type="text" 
-                name="name" 
-                onChange={this.handleInput} 
-                value={this.state.name} 
-                placeholder="Enter Team Name" />
+                <input
+                    type="text"
+                    name="name"
+                    onChange={this.handleInput}
+                    value={this.state.name}
+                    placeholder="Enter Team Name" />
             </div>
             <div>
-                <input 
-                type="text" 
-                name="picture" 
-                onChange={this.handleInput} 
-                value={this.state.picture} 
-                placeholder="Enter Image URL" />
+                <input
+                    type="text"
+                    name="picture"
+                    onChange={this.handleInput}
+                    value={this.state.picture}
+                    placeholder="Enter Image URL" />
             </div>
             <div>
-                <input type="text" 
-                name="website" 
-                onChange={this.handleInput} 
-                value={this.state.website} 
-                placeholder="Enter Website URL" />
+                <input type="text"
+                    name="website"
+                    onChange={this.handleInput}
+                    value={this.state.website}
+                    placeholder="Enter Website URL" />
             </div>
             <input type="submit" value="New Team" />
         </form>
@@ -73,7 +88,7 @@ class NewTeamForm extends React.Component {
 export default class HomePage extends React.Component {
     state = {
         currentTeam: 1,
-        teams: []
+        teams: ""
     }
 
     componentDidMount = () => {
@@ -88,13 +103,13 @@ export default class HomePage extends React.Component {
         return (
             <div class="container">
                 <div>
-                    <NewTeamForm  addNewTeam={this.addNewTeam}/>
+                    <NewTeamForm addNewTeam={this.addNewTeam} />
                 </div>
                 <div class="notification">
                     <ul>
                         {this.state.teams.map(team => (
                             <li>
-                                <Link to='/merchandise/:id'>
+                                <Link to={`/merchandise/${team.id}`}>
                                     {team.name}
                                 </Link>
                             </li>
