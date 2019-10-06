@@ -2,13 +2,34 @@ import React, { Component } from 'react';
 
 
 
-
 export default class TeamPage extends React.Component {
-    render () {
+    state = {
+        team: {},
+        merchandise: {},
+    };
+    componentDidMount() {
+        this.getMerchanandiseByTeamId()
+    }
+
+    getMerchanandiseByTeamId = () => {
+        fetch(`/api/merchandise/${this.props.match.params.id}/`)
+            .then(res => res.json())
+            .then(merchandise => {
+                this.setState({ merchandise });
+            });
+    }
+    componentDidUpdate = (prevProps) => {
+        if (prevProps.match.params.id !== this.props.match.params.id) {
+            this.getMerchanandiseByTeamId();
+        }
+
+    }
+
+    render = () => {
         return (
             <div>
-                <h1>Team Page of id: {this.props.match.params.id}</h1>
-              <p>This will contain both merchandise and Schedule</p>
+                <h1>Team Page of {this.props.match.params.id}</h1>
+                <p>{this.state.merchandise.description}</p>
             </div>
         )
     }
