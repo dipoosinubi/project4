@@ -1,10 +1,8 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
 import App from '../App';
 
 import 'bulma/css/bulma.css'
-
-const getTeamsFromServer = () =>
-    fetch('/api/team/').then(res => res.json())
 
 // const getMerchandiseFromServer = () =>
 // fetch('/api/merchandise/').then(res => res.json())
@@ -88,16 +86,19 @@ class NewTeamForm extends React.Component {
 export default class HomePage extends React.Component {
     state = {
         currentTeam: 1,
-        teams: ""
+        teams: []
     }
 
-    componentDidMount = () => {
-        getTeamsFromServer().
-            then(teams => {
-                this.setState({ teams })
+    componentDidMount() {
+        this.getTeamsFromServer()
+    }
+     getTeamsFromServer = () =>{
+            fetch('/api/team/')
+            .then(res => res.json())
+            .then(json => {
+                this.setState({ teams: json })
             })
-    }
-
+        };
 
     render() {
         return (
