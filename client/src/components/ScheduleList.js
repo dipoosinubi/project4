@@ -23,7 +23,7 @@ export default class ScheduleList extends React.Component {
                 <ul>
                     {this.state.schedule.map(schedule => (
                         <li>
-                            {schedule.description}
+                            {schedule.name} - {schedule.location}
                         </li>
                     ) )}
                 </ul>
