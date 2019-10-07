@@ -4,7 +4,9 @@ import React, { Component } from 'react';
 export default class TeamPage extends React.Component {
     state = {
         team: {
-            merchandise: []
+            merchandise: [],
+            schedule: []
+
         },
     };
     componentDidMount() {
@@ -30,6 +32,15 @@ export default class TeamPage extends React.Component {
                         {this.state.team.merchandise.map(merchandise => (
                             <li>
                                 {merchandise.description}
+                            </li>
+                        ))}
+                    </ul>
+                </div>
+                <div>
+                    <ul>
+                        {this.state.team.schedule.map(schedule => (
+                            <li>
+                                {schedule.name}
                             </li>
                         ))}
                     </ul>

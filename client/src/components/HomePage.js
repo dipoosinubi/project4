@@ -1,24 +1,10 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import App from '../App';
+// import './App.css';
 
 import 'bulma/css/bulma.css'
 
-// const getMerchandiseFromServer = () =>
-// fetch('/api/merchandise/').then(res => res.json())
-
-// const objectFromListById = (teams, merchandise) =>
-//   teams.reduce((obj, team) => {
-//       team.merchandise = merchandise.filter(merchandise => merchandise.team === team.id);
-//       obj[team.id] = team;
-//       return obj;
-//   }, {})
-
-// const getTeamAndMerchandiseFromServer = () =>
-// getTeamsFromServer().then(teams => 
-//     getMerchandiseFromServer().then (merchandise =>
-//         objectFromListById(teams, merchandise)
-//         ))
 
 class NewTeamForm extends React.Component {
 
@@ -82,7 +68,6 @@ class NewTeamForm extends React.Component {
 }
 
 
-
 export default class HomePage extends React.Component {
     state = {
         currentTeam: 1,
@@ -92,14 +77,14 @@ export default class HomePage extends React.Component {
     componentDidMount() {
         this.getTeamsFromServer()
     }
-     getTeamsFromServer = () =>{
-            fetch('/api/team/')
+    getTeamsFromServer = () => {
+        fetch('/api/team/')
             .then(res => res.json())
             .then(json => {
                 this.setState({ teams: json })
             })
-        };
-
+    };
+   
     render() {
         return (
             <div class="container">
@@ -107,18 +92,23 @@ export default class HomePage extends React.Component {
                     <NewTeamForm addNewTeam={this.addNewTeam} />
                 </div>
                 <div class="notification">
-                    <ul>
-                        {this.state.teams.map(team => (
-                            <li>
-                                <Link to={`/team/${team.id}`}>
-                                    {team.name}
-                                </Link>
-                            </li>
-                        ))}
-                    </ul>
+                    {this.state.teams.map(team => (
+                        <div class="card">
+                            <Link to={`/team/${team.id}`}>
+                                <div class="card-image">
+                                    <figure class="image is-4by3">
+                                        <img src={team.picture} alt={team.name}/>
+                                    </figure>
+                                </div>
+                                <div class="content">
+                                   {team.name}
+                                 </div>
+                        </Link>
+                            </div>
+                    ))}
                 </div>
 
-            </div>
+            </div >
         )
     }
 }
