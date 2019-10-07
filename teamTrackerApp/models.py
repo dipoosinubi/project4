@@ -15,7 +15,7 @@ class Merchandise(models.Model):
 
 class Schedule(models.Model):
     name       = models.CharField(max_length=50)
-    date       = models.CharField(max_length=8)
+    date       = models.CharField(max_length=20)
     time       = models.CharField(max_length=10)
     location   = models.CharField(max_length=100)
     website    = models.CharField(max_length=300)

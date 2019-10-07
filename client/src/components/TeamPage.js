@@ -5,7 +5,7 @@ import React, { Component } from 'react';
 export default class TeamPage extends React.Component {
     state = {
         team: {},
-        merchandise: {},
+        merchandise: [],
     };
     componentDidMount() {
         this.getMerchanandiseByTeamId()
@@ -29,7 +29,13 @@ export default class TeamPage extends React.Component {
         return (
             <div>
                 <h1>Team Page of {this.props.match.params.id}</h1>
-                <p>{this.state.merchandise.description}</p>
+                <ul>
+                    <React.Fragment>
+                        <li>
+                            {this.state.merchandise.description}
+                        </li>
+                    </React.Fragment>
+                </ul>
             </div>
         )
     }
