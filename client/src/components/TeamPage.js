@@ -27,6 +27,7 @@ export default class TeamPage extends React.Component {
             <div>
                 <h1>Team Page of {this.props.match.params.id}</h1>
                 Welcome to {this.state.team.name} Page
+                <hr/>
                 <div>
                     <ul>
                         {this.state.team.merchandise.map(merchandise => (
@@ -36,6 +37,7 @@ export default class TeamPage extends React.Component {
                         ))}
                     </ul>
                 </div>
+                <hr />
                 <div>
                     <ul>
                         {this.state.team.schedule.map(schedule => (

@@ -3,6 +3,8 @@ import { Link } from 'react-router-dom';
 import App from '../App';
 // import './App.css';
 
+import 'bulma/css/bulma.css'
+
 class NewTeamForm extends React.Component {
 
     state = {
@@ -92,14 +94,14 @@ export default class HomePage extends React.Component {
                             <Link to={`/team/${team.id}`}>
                                 <div class="card-image">
                                     <figure class="image is-4by3">
-                                        <img src={team.picture} alt={team.name}/>
+                                        <img src={team.picture} alt={team.name} />
                                     </figure>
                                 </div>
                                 <div class="content">
-                                   {team.name}
-                                 </div>
-                        </Link>
-                            </div>
+                                    {team.name}
+                                </div>
+                            </Link>
+                        </div>
                     ))}
                 </div>
             </div >
