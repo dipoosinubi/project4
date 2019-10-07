@@ -5,30 +5,33 @@ import React, { Component } from 'react';
 export default class TeamPage extends React.Component {
     state = {
         team: {},
-        merchandise: [],
+     merchandise: [],
     };
     componentDidMount() {
-        this.getMerchanandiseByTeamId()
+        this.getTeam()
     }
 
-    getMerchanandiseByTeamId = () => {
-        fetch(`/api/merchandise/${this.props.match.params.team}/`)
+    getTeam = () => {
+        fetch(`/api/team/${this.props.match.params.id}/`)
             .then(res => res.json())
-            .then(merchandise => {
-                this.setState({ merchandise });
+            .then(team => {
+                this.setState({ team });
             });
     }
-    componentDidUpdate = (prevProps) => {
-        if (prevProps.match.params.team !== this.props.match.params.team) {
-            this.getMerchanandiseByTeamId();
-        }
-
-    }
-
+      getMerchandise = () => {
+          fetch(`/api/merchandise/`)
+          .then( res => res.json ())
+          .then(json => {
+              this.setState ({ merchandise: json })
+          })
+      }
+    
     render = () => {
         return (
             <div>
                 <h1>Team Page of {this.props.match.params.id}</h1>
+                Welcome to {this.state.team.name} Page
+                <div>
                 <ul>
                     {this.state.merchandise.map(merchandise => (
                         <li>
@@ -36,6 +39,7 @@ export default class TeamPage extends React.Component {
                         </li>
                     ))}
                 </ul>
+                </div>
             </div>
         )
     }
