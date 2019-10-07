@@ -3,17 +3,12 @@ import { Link } from 'react-router-dom';
 import App from '../App';
 // import './App.css';
 
-import 'bulma/css/bulma.css'
-
-
 class NewTeamForm extends React.Component {
 
     state = {
-        // newTeam: {
         name: "",
         picture: "",
         website: ""
-        // }
     }
     handleInput = (event) => {
         let newTeam = { ...this.state };
@@ -84,7 +79,7 @@ export default class HomePage extends React.Component {
                 this.setState({ teams: json })
             })
     };
-   
+
     render() {
         return (
             <div class="container">
@@ -107,7 +102,6 @@ export default class HomePage extends React.Component {
                             </div>
                     ))}
                 </div>
-
             </div >
         )
     }
