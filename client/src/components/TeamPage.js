@@ -5,27 +5,33 @@ import React, { Component } from 'react';
 export default class TeamPage extends React.Component {
     state = {
         team: {},
-     merchandise: [],
+    //  merchandise: [],
     };
     componentDidMount() {
-        this.getTeam()
+        this.getTeamAndMerchandise()
     }
 
     getTeam = () => {
         fetch(`/api/team/${this.props.match.params.id}/`)
             .then(res => res.json())
-            .then(team => {
-                this.setState({ team });
-            });
     }
       getMerchandise = () => {
           fetch(`/api/merchandise/`)
           .then( res => res.json ())
-          .then(json => {
-              this.setState ({ merchandise: json })
-          })
       }
     
+    objectFromListById = (team, merchandise) => 
+    team.reduce((obj, team) => {
+        team.merchandise = merchandise.filter( merchandise => merchandise.team === team.id)
+        obj[team.id] = team
+        return obj;
+    }, {})
+
+    getTeamAndMerchandise = () => 
+      getTeam().then( team =>
+        getMerchandise().then( merchandise =>
+            objectFromListById(team, merchandise)
+            ))
     render = () => {
         return (
             <div>
@@ -33,7 +39,7 @@ export default class TeamPage extends React.Component {
                 Welcome to {this.state.team.name} Page
                 <div>
                 <ul>
-                    {this.state.merchandise.map(merchandise => (
+                    {this.state.team.merchandise.map(merchandise => (
                         <li>
                             {merchandise.description}
                         </li>
