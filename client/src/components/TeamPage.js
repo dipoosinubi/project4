@@ -12,14 +12,14 @@ export default class TeamPage extends React.Component {
     }
 
     getMerchanandiseByTeamId = () => {
-        fetch(`/api/merchandise/${this.props.match.params.id}/`)
+        fetch(`/api/merchandise/${this.props.match.params.team}/`)
             .then(res => res.json())
             .then(merchandise => {
                 this.setState({ merchandise });
             });
     }
     componentDidUpdate = (prevProps) => {
-        if (prevProps.match.params.id !== this.props.match.params.id) {
+        if (prevProps.match.params.team !== this.props.match.params.team) {
             this.getMerchanandiseByTeamId();
         }
 
@@ -30,11 +30,11 @@ export default class TeamPage extends React.Component {
             <div>
                 <h1>Team Page of {this.props.match.params.id}</h1>
                 <ul>
-                    <React.Fragment>
+                    {this.state.merchandise.map(merchandise => (
                         <li>
-                            {this.state.merchandise.description}
+                            {merchandise.description}
                         </li>
-                    </React.Fragment>
+                    ))}
                 </ul>
             </div>
         )
