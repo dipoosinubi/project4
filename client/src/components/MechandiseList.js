@@ -23,7 +23,9 @@ export default class MerchandiseList extends React.Component {
                 <ul>
                     {this.state.merchandise.map(merchandise => (
                         <li>
-                            {merchandise.description}
+                            {merchandise.description} <br/>
+                            <a href={merchandise.website} target="_blank" >Buy</a>
+                            <hr/>
                         </li>
                     ) )}
                 </ul>

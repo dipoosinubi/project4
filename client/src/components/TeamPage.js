@@ -32,7 +32,8 @@ export default class TeamPage extends React.Component {
                     <ul>
                         {this.state.team.merchandise.map(merchandise => (
                             <li>
-                                {merchandise.description}
+                                {merchandise.description} <br/>
+                            <a href={merchandise.website} target="_blank" >Buy</a>
                             </li>
                         ))}
                     </ul>
@@ -42,7 +43,11 @@ export default class TeamPage extends React.Component {
                     <ul>
                         {this.state.team.schedule.map(schedule => (
                             <li>
-                                {schedule.name}
+                              Opponent: {schedule.name}<br/>
+                              Date: {schedule.date}<br/>
+                              Time: {schedule.time}<br/>
+                              Location: {schedule.location}<br/>
+                            <a href={schedule.website} target="_blank" >Buy Tickets</a>
                             </li>
                         ))}
                     </ul>

@@ -17,15 +17,16 @@ export default class ScheduleList extends React.Component {
                 this.setState({ teams: json })
                 return json
             })
-            .then((v) => {
-                console.log(v)
+            .then((schedule) => {
+                console.log(schedule)
             })
     }
 
     scheduleComponent = (teamName, teamSchedule) => {
-        return teamSchedule.map((v) => {
-                 return (<li>{teamName}   vs {v.name} <br/> {v.location} <br/>
-                 <a href={v.website} target="_blank" >Buy Tickets</a>
+        return teamSchedule.map((schedule) => {
+                 return (<li> Game: {teamName}   vs {schedule.name} <br/> Location: {schedule.location} <br/>
+                 Date: {schedule.date} <br/> Time: {schedule.time}<br/>
+                 <a href={schedule.website} target="_blank" >Buy Tickets</a>
                    <hr/> </li>)
             })
     }
