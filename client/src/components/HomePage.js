@@ -1,6 +1,13 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import App from '../App';
+import { Grid, Paper, Typography } from "@material-ui/core";
+import Card from "@material-ui/core/Card";
+import CardActionArea from "@material-ui/core/CardActionArea";
+import CardActions from "@material-ui/core/CardActions";
+import CardContent from "@material-ui/core/CardContent";
+import CardMedia from "@material-ui/core/CardMedia";
+import Button from "@material-ui/core/Button";
 // import './App.css';
 
 import 'bulma/css/bulma.css'
@@ -84,27 +91,35 @@ export default class HomePage extends React.Component {
 
     render() {
         return (
-            <div class="container">
-                <div>
-                    <NewTeamForm addNewTeam={this.addNewTeam} />
-                </div>
-                <div class="notification">
+            <div>
+                <NewTeamForm addNewTeam={this.addNewTeam} />
+                <div className="teamList">
                     {this.state.teams.map(team => (
-                        <div class="card">
-                            <Link to={`/team/${team.id}`}>
-                                <div class="card-image">
-                                    <figure class="image is-4by3">
-                                        <img src={team.picture} alt={team.name} />
-                                    </figure>
-                                </div>
-                                <div class="content">
-                                    {team.name}
-                                </div>
-                            </Link>
-                        </div>
+                        <Card className="teamCard" key={team.id}>
+                            <CardActionArea>
+                                <Link to={`/team/${team.id}`} >
+                                    <CardMedia
+                                        className="cardImg"
+                                        // component="img"
+                                        alt={team.name}
+                                        image={team.picture}
+                                        title={team.name}
+                                        className="Team Picture"
+                                    />
+                                    <CardContent className="card-content">
+                                        <Typography gutterBottom variant="h6" component="p">
+                                            {team.name}
+                                        </Typography>
+                                        <Typography variant="body2" color="textSecondary" component="p">
+                                        Click Here For Team Merchandise and Schedule
+                                    </Typography>
+                                    </CardContent>
+                                </Link>
+                            </CardActionArea>
+                        </Card>
                     ))}
                 </div>
-            </div >
+            </div>
         )
     }
 }
