@@ -25,7 +25,7 @@
   max-width: 250px;
   margin: 30px 20px;
 }
-.img {
+.cardImg {
   height:50%
 }
 
@@ -33,4 +33,24 @@
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
+}
+.nav{
+  position: fixed;
+  max-height: 10px;
+}
+
+.navbar{
+  background-color: rgb(39, 74, 148);
+  color: white
+}
+
+.nav-logo{
+  margin-right: 20px;
+}
+
+.white {
+  color: white!;
+}
+img {
+  size: 50%
 }

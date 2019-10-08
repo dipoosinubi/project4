@@ -23,6 +23,7 @@ export default class MerchandiseList extends React.Component {
                 <ul>
                     {this.state.merchandise.map(merchandise => (
                         <li>
+                           <img src={merchandise.picture} /><br/>
                             {merchandise.description} <br/>
                             <a href={merchandise.website} target="_blank" >Buy</a>
                             <hr/>

@@ -4,10 +4,10 @@ import App from '../App';
 import { Grid, Paper, Typography } from "@material-ui/core";
 import Card from "@material-ui/core/Card";
 import CardActionArea from "@material-ui/core/CardActionArea";
-import CardActions from "@material-ui/core/CardActions";
+// import CardActions from "@material-ui/core/CardActions";
 import CardContent from "@material-ui/core/CardContent";
 import CardMedia from "@material-ui/core/CardMedia";
-import Button from "@material-ui/core/Button";
+// import Button from "@material-ui/core/Button";
 // import './App.css';
 
 import 'bulma/css/bulma.css'
@@ -92,6 +92,11 @@ export default class HomePage extends React.Component {
     render() {
         return (
             <div>
+                <h1>SUPES FOOTY </h1>
+                Lorem Ipsum is simply dummy text of the printing and typesetting industry. <br/>
+                Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.<br/>
+                 It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. <br/>
+                 It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.<hr/>
                 <NewTeamForm addNewTeam={this.addNewTeam} />
                 <div className="teamList">
                     {this.state.teams.map(team => (
@@ -110,8 +115,8 @@ export default class HomePage extends React.Component {
                                         <Typography gutterBottom variant="h6" component="p">
                                             {team.name}
                                         </Typography>
-                                        <Typography variant="body2" color="textSecondary" component="p">
-                                        Click Here For Team Merchandise and Schedule
+                                        <Typography variant="body2" color="textPrimary" component="p">
+                                            Click Here For Team Merchandise and Schedule
                                     </Typography>
                                     </CardContent>
                                 </Link>
