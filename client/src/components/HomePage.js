@@ -30,10 +30,12 @@ class NewTeamForm extends React.Component {
     handleSubmit = (event) => {
         event.preventDefault();
         this.addNewTeam(this.state)
-        window.location.reload();
+        debugger;
+        // window.location.reload();
     }
-
-    addNewTeam = (newTeam) =>
+    
+    addNewTeam = (newTeam) => {
+        console.log("addNewTeam ran");
         fetch('/api/team/',
             {
                 method: "POST",
@@ -41,6 +43,8 @@ class NewTeamForm extends React.Component {
                 body: JSON.stringify(newTeam)
             }
         ).then(res => res.json())
+
+    }
 
 
     render = () => (
