@@ -25,13 +25,14 @@ export default class ScheduleList extends React.Component {
 
     scheduleComponent = (teamName, teamSchedule) => {
         return teamSchedule.map((schedule) => {
-                 return (<li> Game: {teamName}   vs {schedule.name} <br/> Location: {schedule.location} <br/>
-                 Date: {schedule.date} <br/> Time: {schedule.time}<br/>
-                 <Button variant="contained" href={schedule.website} target="_blank">
-            Buy Tickets
-        </Button>
-                 {/* <a href={schedule.website} target="_blank" >Buy Tickets</a> */}
-                   <hr/> </li>)
+                 return (<li> 
+                     Game: {teamName}   vs {schedule.name} <br/> Location: {schedule.location} <br/>
+                     Date: {schedule.date} <br/> Time: {schedule.time}<br/>
+                     <Button variant="contained" href={schedule.website} target="_blank">
+                     Buy Tickets
+                     </Button>
+                     <hr/>
+                      </li>)
             })
     }
 

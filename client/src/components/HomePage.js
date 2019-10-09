@@ -1,21 +1,18 @@
 import React, { Component, Fragment } from 'react';
 import { Link } from 'react-router-dom';
-import App from '../App';
-import { Grid, Paper, Typography } from "@material-ui/core";
+
+
+import { Typography } from "@material-ui/core";
 import Card from "@material-ui/core/Card";
 import CardActionArea from "@material-ui/core/CardActionArea";
-// import CardActions from "@material-ui/core/CardActions";
 import CardContent from "@material-ui/core/CardContent";
 import CardMedia from "@material-ui/core/CardMedia";
 import Button from "@material-ui/core/Button";
-// import './App.css';
-import clsx from 'clsx';
-import MenuItem from '@material-ui/core/MenuItem';
 import TextField from '@material-ui/core/TextField';
-import Fab from '@material-ui/core/Fab';
-import NavigationIcon from '@material-ui/icons/Navigation';
+
 
 import 'bulma/css/bulma.css'
+
 
 class NewTeamForm extends React.Component {
 
@@ -47,71 +44,42 @@ class NewTeamForm extends React.Component {
 
 
     render = () => (
-        // <form onSubmit={this.handleSubmit}>
-        //     <div>
-        //         <input
-        //             type="text"
-        //             name="name"
-        //             onChange={this.handleInput}
-        //             value={this.state.name}
-        //             placeholder="Enter Team Name" />
-        //     </div>
-        //     <div>
-        //         <input
-        //             type="text"
-        //             name="picture"
-        //             onChange={this.handleInput}
-        //             value={this.state.picture}
-        //             placeholder="Enter Image URL" />
-        //     </div>
-        //     <div>
-        //         <input type="text"
-        //             name="website"
-        //             onChange={this.handleInput}
-        //             value={this.state.website}
-        //             placeholder="Enter Website URL" />
-        //     </div>
-        //     <input type="submit" value="New Team" />
-        // </form>
+
         <Fragment>
-<form noValidate autoComplete="off" onSubmit={this.handleSubmit} >
-        <TextField
-        id="outlined-with-placeholder"
-        label="Team Name"
-        margin="normal"
-        variant="outlined"
-        type="text"
-        name="name"
-        onChange={this.handleInput}
-        value={this.state.name}
-      />
-       <TextField
-        id="outlined-with-placeholder"
-        label="Team Logo"
-        margin="normal"
-        variant="outlined"
-        type="text"
-        name="picture"
-        onChange={this.handleInput}
-        value={this.state.picture}
-      />
-      <TextField
-        id="outlined-with-placeholder"
-        label="Team Website"
-        margin="normal"
-        variant="outlined"
-        type="text"
-        name="website"
-        onChange={this.handleInput}
-        value={this.state.website}
-      />
-      {/* <Fab  className="button" variant="extended" aria-label="delete" >
-        <NavigationIcon  />
-        Extended
-      </Fab> */}
-      </form>
-      <Button variant="contained" onClick={this.handleSubmit}>
-            Add Team
+            <form noValidate autoComplete="off" onSubmit={this.handleSubmit} >
+                <TextField
+                    id="outlined-with-placeholder"
+                    label="Team Name"
+                    margin="normal"
+                    variant="outlined"
+                    type="text"
+                    name="name"
+                    onChange={this.handleInput}
+                    value={this.state.name}
+                />
+                <TextField
+                    id="outlined-with-placeholder"
+                    label="Team Logo"
+                    margin="normal"
+                    variant="outlined"
+                    type="text"
+                    name="picture"
+                    onChange={this.handleInput}
+                    value={this.state.picture}
+                />
+                <TextField
+                    id="outlined-with-placeholder"
+                    label="Team Website"
+                    margin="normal"
+                    variant="outlined"
+                    type="text"
+                    name="website"
+                    onChange={this.handleInput}
+                    value={this.state.website}
+                />
+            </form>
+            <Button variant="contained" onClick={this.handleSubmit}>
+                Add Team
         </Button>
         </Fragment>
     )
@@ -139,10 +107,10 @@ export default class HomePage extends React.Component {
         return (
             <div>
                 <h1>SUPES FOOTY </h1>
-                Lorem Ipsum is simply dummy text of the printing and typesetting industry. <br/>
-                Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.<br/>
-                 It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. <br/>
-                 It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.<hr/>
+                Lorem Ipsum is simply dummy text of the printing and typesetting industry. <br />
+                Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.<br />
+                It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. <br />
+                It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.<hr />
                 <NewTeamForm addNewTeam={this.addNewTeam} />
                 <div className="teamList">
                     {this.state.teams.map(team => (
@@ -161,15 +129,15 @@ export default class HomePage extends React.Component {
                                         <Typography gutterBottom variant="h6" component="p">
                                             {team.name}
                                         </Typography>
-                                        
+
                                         <Typography variant="body2" color="textPrimary" component="p">
                                             Click Here For Team Merchandise and Schedule
                                     </Typography>
                                     </CardContent>
                                 </Link>
                                 <Typography gutterBottom variant="h6" component="p">
-                                           Visit Team Website: {team.website}
-                                        </Typography>
+                                    Visit Team Website: {team.website}
+                                </Typography>
                             </CardActionArea>
                         </Card>
                     ))}
