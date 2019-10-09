@@ -7,8 +7,13 @@ import CardActionArea from "@material-ui/core/CardActionArea";
 // import CardActions from "@material-ui/core/CardActions";
 import CardContent from "@material-ui/core/CardContent";
 import CardMedia from "@material-ui/core/CardMedia";
-// import Button from "@material-ui/core/Button";
+import Button from "@material-ui/core/Button";
 // import './App.css';
+import clsx from 'clsx';
+import MenuItem from '@material-ui/core/MenuItem';
+import TextField from '@material-ui/core/TextField';
+import Fab from '@material-ui/core/Fab';
+import NavigationIcon from '@material-ui/icons/Navigation';
 
 import 'bulma/css/bulma.css'
 
@@ -42,32 +47,71 @@ class NewTeamForm extends React.Component {
 
 
     render = () => (
-        <form onSubmit={this.handleSubmit}>
-            <div>
-                <input
-                    type="text"
-                    name="name"
-                    onChange={this.handleInput}
-                    value={this.state.name}
-                    placeholder="Enter Team Name" />
-            </div>
-            <div>
-                <input
-                    type="text"
-                    name="picture"
-                    onChange={this.handleInput}
-                    value={this.state.picture}
-                    placeholder="Enter Image URL" />
-            </div>
-            <div>
-                <input type="text"
-                    name="website"
-                    onChange={this.handleInput}
-                    value={this.state.website}
-                    placeholder="Enter Website URL" />
-            </div>
-            <input type="submit" value="New Team" />
-        </form>
+        // <form onSubmit={this.handleSubmit}>
+        //     <div>
+        //         <input
+        //             type="text"
+        //             name="name"
+        //             onChange={this.handleInput}
+        //             value={this.state.name}
+        //             placeholder="Enter Team Name" />
+        //     </div>
+        //     <div>
+        //         <input
+        //             type="text"
+        //             name="picture"
+        //             onChange={this.handleInput}
+        //             value={this.state.picture}
+        //             placeholder="Enter Image URL" />
+        //     </div>
+        //     <div>
+        //         <input type="text"
+        //             name="website"
+        //             onChange={this.handleInput}
+        //             value={this.state.website}
+        //             placeholder="Enter Website URL" />
+        //     </div>
+        //     <input type="submit" value="New Team" />
+        // </form>
+        <form noValidate autoComplete="off">
+        <TextField
+        id="outlined-with-placeholder"
+        label="Team Name"
+        margin="normal"
+        variant="outlined"
+        type="text"
+        name="name"
+        onChange={this.handleInput}
+        value={this.state.name}
+      />
+       <TextField
+        id="outlined-with-placeholder"
+        label="Team Logo"
+        margin="normal"
+        variant="outlined"
+        type="text"
+        name="picture"
+        onChange={this.handleInput}
+        value={this.state.picture}
+      />
+      <TextField
+        id="outlined-with-placeholder"
+        label="Team Website"
+        margin="normal"
+        variant="outlined"
+        type="text"
+        name="website"
+        onChange={this.handleInput}
+        value={this.state.picture}
+      />
+      {/* <Fab  className="button" variant="extended" aria-label="delete" >
+        <NavigationIcon  />
+        Extended
+      </Fab> */}
+       <Button variant="contained">
+        Default
+      </Button>
+      </form>
     )
 }
 

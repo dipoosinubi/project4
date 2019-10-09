@@ -20,7 +20,6 @@
 .App-link {
   color: #09d3ac;
 }
-
 .teamCard {
   max-width: 250px;
   margin: 30px 20px;
@@ -51,6 +50,9 @@
 .white {
   color: white!;
 }
-img {
-  size: 50%
+.img {
+  size: 10vh
+}
+.button{
+  margin-top: 100px
 }
