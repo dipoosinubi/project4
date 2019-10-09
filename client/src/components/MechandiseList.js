@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import Button from "@material-ui/core/Button";
 
 
 
@@ -28,8 +29,10 @@ export default class MerchandiseList extends React.Component {
                             src={merchandise.picture} 
                             /><br/>
                             {merchandise.description} <br/>
-                            
-                            <a href={merchandise.website} target="_blank" >Buy</a>
+                            <Button variant="contained" href={merchandise.website} target="_blank">
+            Buy
+        </Button>
+                            {/* <a href={merchandise.website} target="_blank" >Buy</a> */}
                             <hr/>
                         </li>
                     ) )}
