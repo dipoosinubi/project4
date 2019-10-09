@@ -42,6 +42,7 @@ export default class TeamPage extends React.Component {
                                         <li>
                                             <img src={merchandise.picture}/> <br/>
                                             {merchandise.description} <br />
+                                            {merchandise.availability} <br />
                                             <a href={merchandise.website} target="_blank" >Buy</a> <hr/>
                                         </li>
                                     ))}

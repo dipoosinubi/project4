@@ -28,6 +28,7 @@ export default class MerchandiseList extends React.Component {
                             src={merchandise.picture} 
                             /><br/>
                             {merchandise.description} <br/>
+                            
                             <a href={merchandise.website} target="_blank" >Buy</a>
                             <hr/>
                         </li>

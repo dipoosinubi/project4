@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component, Fragment } from 'react';
 import { Link } from 'react-router-dom';
 import App from '../App';
 import { Grid, Paper, Typography } from "@material-ui/core";
@@ -73,7 +73,8 @@ class NewTeamForm extends React.Component {
         //     </div>
         //     <input type="submit" value="New Team" />
         // </form>
-        <form noValidate autoComplete="off">
+        <Fragment>
+<form noValidate autoComplete="off" onSubmit={this.handleSubmit} >
         <TextField
         id="outlined-with-placeholder"
         label="Team Name"
@@ -102,16 +103,17 @@ class NewTeamForm extends React.Component {
         type="text"
         name="website"
         onChange={this.handleInput}
-        value={this.state.picture}
+        value={this.state.website}
       />
       {/* <Fab  className="button" variant="extended" aria-label="delete" >
         <NavigationIcon  />
         Extended
       </Fab> */}
-       <Button variant="contained">
-        Default
-      </Button>
       </form>
+      <Button variant="contained" onClick={this.handleSubmit}>
+            Add Team
+        </Button>
+        </Fragment>
     )
 }
 
@@ -159,11 +161,15 @@ export default class HomePage extends React.Component {
                                         <Typography gutterBottom variant="h6" component="p">
                                             {team.name}
                                         </Typography>
+                                        
                                         <Typography variant="body2" color="textPrimary" component="p">
                                             Click Here For Team Merchandise and Schedule
                                     </Typography>
                                     </CardContent>
                                 </Link>
+                                <Typography gutterBottom variant="h6" component="p">
+                                           Visit Team Website: {team.website}
+                                        </Typography>
                             </CardActionArea>
                         </Card>
                     ))}

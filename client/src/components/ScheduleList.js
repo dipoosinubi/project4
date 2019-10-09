@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import Button from "@material-ui/core/Button";
 import TeamPage from './TeamPage';
 
 
@@ -26,7 +27,10 @@ export default class ScheduleList extends React.Component {
         return teamSchedule.map((schedule) => {
                  return (<li> Game: {teamName}   vs {schedule.name} <br/> Location: {schedule.location} <br/>
                  Date: {schedule.date} <br/> Time: {schedule.time}<br/>
-                 <a href={schedule.website} target="_blank" >Buy Tickets</a>
+                 <Button variant="contained" href={schedule.website} target="_blank">
+            Buy Tickets
+        </Button>
+                 {/* <a href={schedule.website} target="_blank" >Buy Tickets</a> */}
                    <hr/> </li>)
             })
     }
