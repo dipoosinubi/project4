@@ -10,8 +10,9 @@ class NewMerchandiseForm extends React.Component {
     state = {
         description: "",
         picture: "",
+        availability: true,
         price: "",
-        wesbite: "",
+        website: "",
         team: ""
     }
     handleInput = (event) => {
@@ -84,17 +85,17 @@ class NewMerchandiseForm extends React.Component {
                 </InputLabel>
                 <Select
                     native
-                    value={this.state.team}
+                    // value={this.state.team}
                     onChange={this.handleInput}
                     // labelWidth={labelWidth}
                     inputProps={{
-                        name: 'TEAM',
-                        id: 'outlined-age-native-simple',
+                        name: 'team',
+                        // id: 'outlined-age-native-simple',
                     }}
                 >
                     <option value="" />
-                    <option value={this.state.team}>Chelsea</option>
-                    <option value={this.state.team}>Machester United</option>
+                    <option value="1">Chelsea</option>
+                    <option value="3">Machester United</option>
                 </Select>
             </FormControl>
             <Button variant="contained" onClick={this.handleSubmit}>
